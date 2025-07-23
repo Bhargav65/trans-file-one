@@ -146,9 +146,9 @@
     "yargs": "^15.4.1",
     "yargs-parser": "^18.1.3"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+   "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build step needed'" 
   },
   "author": "",
   "license": "ISC",
