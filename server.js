@@ -331,7 +331,7 @@ io.on('connection', (socket) => {
     //console.log(`Host ${socket.id} disconnected from room ${roomCode}. Starting grace period...`);
         
         // Remove host from participants temporarily
-        //room.participants.delete(socket.id);
+        room.participants.delete(socket.id);
         
         // Update participant count for remaining users
         if (room.participants.size > 0) {
@@ -350,9 +350,9 @@ io.on('connection', (socket) => {
           const currentRoom = activeRooms.get(roomCode);
           if (currentRoom && !currentRoom.participants.has(socket.id)) {
             // Host didn't reconnect - close the room
-            // io.to(roomCode).emit('room-closed-by-host');
-            // activeRooms.delete(roomCode);
-            // hostGracePeriod.delete(roomCode);
+            io.to(roomCode).emit('room-closed-by-host');
+            activeRooms.delete(roomCode);
+            hostGracePeriod.delete(roomCode);
             //console.log(`Room ${roomCode} closed - host disconnected permanently`);
           }
         }, 5000); // 5 second grace period for refresh
@@ -407,5 +407,5 @@ setInterval(() => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} and hello Hi`);
+  console.log(`Server running on port ${PORT}`);
 });
