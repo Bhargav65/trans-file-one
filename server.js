@@ -331,7 +331,7 @@ io.on('connection', (socket) => {
     //console.log(`Host ${socket.id} disconnected from room ${roomCode}. Starting grace period...`);
         
         // Remove host from participants temporarily
-        room.participants.delete(socket.id);
+        //room.participants.delete(socket.id);
         
         // Update participant count for remaining users
         if (room.participants.size > 0) {
