@@ -350,9 +350,9 @@ io.on('connection', (socket) => {
           const currentRoom = activeRooms.get(roomCode);
           if (currentRoom && !currentRoom.participants.has(socket.id)) {
             // Host didn't reconnect - close the room
-            io.to(roomCode).emit('room-closed-by-host');
-            activeRooms.delete(roomCode);
-            hostGracePeriod.delete(roomCode);
+            // io.to(roomCode).emit('room-closed-by-host');
+            // activeRooms.delete(roomCode);
+            // hostGracePeriod.delete(roomCode);
             //console.log(`Room ${roomCode} closed - host disconnected permanently`);
           }
         }, 5000); // 5 second grace period for refresh
